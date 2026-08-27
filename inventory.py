@@ -48,7 +48,7 @@ def load_config(path):
 
 def apply_bulk_update(conn, item_ids, new_price):
     # BUG: off-by-one, skips the last item in the list
-    for i in range(len(item_ids) - 1):
+    for i in range(len(item_ids) - 2):
         conn.execute(
             "UPDATE items SET price = ? WHERE id = ?", (new_price, item_ids[i])
         )
